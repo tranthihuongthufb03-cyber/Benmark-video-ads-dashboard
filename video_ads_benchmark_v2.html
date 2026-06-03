@@ -1,0 +1,190 @@
+
+<h2 class="sr-only">Dashboard phân tích hiệu suất video ads với chỉ số watch rate 25/50/75/100%</h2>
+
+<div style="padding: 1rem 0;">
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.5rem;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">CTR trung bình</div>
+    <div style="font-size: 22px; font-weight: 500; color: var(--color-text-primary);">1.65%</div>
+    <div style="font-size: 11px; color: var(--color-text-tertiary);">1.15% – 2.67% range</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Hook rate (25%)</div>
+    <div style="font-size: 22px; font-weight: 500; color: var(--color-text-primary);">8.2%</div>
+    <div style="font-size: 11px; color: var(--color-text-tertiary);">avg / lượt hiển thị</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Mid rate (50%)</div>
+    <div style="font-size: 22px; font-weight: 500; color: var(--color-text-primary);">3.4%</div>
+    <div style="font-size: 11px; color: var(--color-text-tertiary);">avg / lượt hiển thị</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Hold rate (75%)</div>
+    <div style="font-size: 22px; font-weight: 500; color: var(--color-text-primary);">2.0%</div>
+    <div style="font-size: 11px; color: var(--color-text-tertiary);">avg / lượt hiển thị</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; text-align: center;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Complete rate (100%)</div>
+    <div style="font-size: 22px; font-weight: 500; color: var(--color-text-primary);">1.47%</div>
+    <div style="font-size: 11px; color: var(--color-text-tertiary);">avg / lượt hiển thị</div>
+  </div>
+</div>
+
+<div style="margin-bottom: 1.5rem;">
+  <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 8px;">CTR theo từng ad (%) — benchmark đề xuất: 1.6%</div>
+  <div style="position: relative; width: 100%; height: 300px;">
+    <canvas id="ctrChart" role="img" aria-label="Bar chart CTR của từng ad video">CTR các ads: TSUT Clip7 1.44%, TSUT TQ 1.30%, TSUT Clip1 1.83%, TSUT Clip4 1.40%, TSUT Clip6 1.96%, TSĐQ Não3D 1.15%, TSĐQ BácTâm 1.66%, TSĐQ PACS 1.79%, NSTH Nguyệt 2.67%, NSTH TQ 1.94%</canvas>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+  <div>
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 8px;">Retention funnel trung bình (%)</div>
+    <div style="position: relative; width: 100%; height: 220px;">
+      <canvas id="funnelChart" role="img" aria-label="Funnel xem video trung bình qua 25%, 50%, 75%, 100%">Funnel: 25% = 8.2%, 50% = 3.4%, 75% = 2.0%, 100% = 1.47%</canvas>
+    </div>
+  </div>
+  <div>
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 8px;">Watch rate 50% và 75% theo từng ad (%)</div>
+    <div style="position: relative; width: 100%; height: 220px;">
+      <canvas id="midChart" role="img" aria-label="Grouped bar chart watch rate 50% và 75% từng ad">Watch rate 50% và 75% cho 10 ads</canvas>
+    </div>
+  </div>
+</div>
+
+<div style="border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem;">
+  <div style="font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 12px;">Benchmark đề xuất cho video tiếp theo</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px;">
+    <div style="background: #EAF3DE; border-radius: var(--border-radius-md); padding: 10px 14px;">
+      <div style="font-size: 11px; color: #3B6D11; font-weight: 500;">TARGET CTR</div>
+      <div style="font-size: 18px; font-weight: 500; color: #27500A;">≥ 1.8%</div>
+      <div style="font-size: 11px; color: #639922;">Top 30% hiện tại</div>
+    </div>
+    <div style="background: #E6F1FB; border-radius: var(--border-radius-md); padding: 10px 14px;">
+      <div style="font-size: 11px; color: #185FA5; font-weight: 500;">TARGET HOOK (25%)</div>
+      <div style="font-size: 18px; font-weight: 500; color: #0C447C;">≥ 12%</div>
+      <div style="font-size: 11px; color: #378ADD;">Avg hiện tại: 8.2%</div>
+    </div>
+    <div style="background: #EEEDFE; border-radius: var(--border-radius-md); padding: 10px 14px;">
+      <div style="font-size: 11px; color: #534AB7; font-weight: 500;">TARGET MID (50%)</div>
+      <div style="font-size: 18px; font-weight: 500; color: #3C3489;">≥ 5%</div>
+      <div style="font-size: 11px; color: #7F77DD;">Avg hiện tại: 3.4%</div>
+    </div>
+    <div style="background: #FAECE7; border-radius: var(--border-radius-md); padding: 10px 14px;">
+      <div style="font-size: 11px; color: #993C1D; font-weight: 500;">TARGET HOLD (75%)</div>
+      <div style="font-size: 18px; font-weight: 500; color: #712B13;">≥ 3%</div>
+      <div style="font-size: 11px; color: #D85A30;">Avg hiện tại: 2.0%</div>
+    </div>
+    <div style="background: #FAEEDA; border-radius: var(--border-radius-md); padding: 10px 14px;">
+      <div style="font-size: 11px; color: #854F0B; font-weight: 500;">TARGET COMPLETE (100%)</div>
+      <div style="font-size: 18px; font-weight: 500; color: #633806;">≥ 2.5%</div>
+      <div style="font-size: 11px; color: #BA7517;">Avg hiện tại: 1.47%</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const shortLabels = ['Clip7','TQ-TS','Clip1','Clip4','Clip6','Não3D','BácTâm','PACS','Nguyệt','TQ-NS'];
+const impressions = [1672434, 979855, 26314, 695719, 59089, 2876260, 410924, 480370, 813030, 370540];
+const ctrData = [1.44, 1.30, 1.83, 1.40, 1.96, 1.15, 1.66, 1.79, 2.67, 1.94];
+const w25 = [52032,49522,1085,22683,1849,420070,13397,18223,21510,20771];
+const w50 = [23036,16910,474,9612,791,166242,6393,7463,9238,12986];
+const w75 = [12991,10978,287,5834,525,88890,4176,4242,5023,9277];
+const w100 = [7586,6748,194,3417,329,52021,2433,2545,2529,4565];
+
+const rate50 = impressions.map((imp,i) => parseFloat((w50[i]/imp*100).toFixed(2)));
+const rate75 = impressions.map((imp,i) => parseFloat((w75[i]/imp*100).toFixed(2)));
+
+const ctrColors = ctrData.map(v => v >= 1.8 ? '#639922' : v >= 1.6 ? '#378ADD' : '#E24B4A');
+
+new Chart(document.getElementById('ctrChart'), {
+  type: 'bar',
+  data: {
+    labels: shortLabels,
+    datasets: [{
+      label: 'CTR (%)',
+      data: ctrData,
+      backgroundColor: ctrColors,
+      borderRadius: 4
+    },{
+      label: 'Benchmark 1.6%',
+      data: new Array(10).fill(1.6),
+      type: 'line',
+      borderColor: '#888780',
+      borderDash: [5,4],
+      borderWidth: 1.5,
+      pointRadius: 0,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' }}
+    },
+    scales: {
+      y: { min: 0, max: 3.0, ticks: { callback: v => v.toFixed(1)+'%', font:{size:11} }, grid: { color: 'rgba(136,135,128,0.15)' }},
+      x: { ticks: { font:{size:11} }, grid: { display:false }}
+    }
+  }
+});
+
+new Chart(document.getElementById('funnelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['25% Hook','50% Mid','75% Hold','100% Complete'],
+    datasets: [{
+      label: 'Watch rate (%)',
+      data: [8.2, 3.4, 2.0, 1.47],
+      backgroundColor: ['#185FA5','#378ADD','#85B7EB','#B5D4F4'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x.toFixed(2)+'%' }}},
+    scales: {
+      x: { ticks: { callback: v => v+'%', font:{size:11} }, grid: { color: 'rgba(136,135,128,0.15)' }},
+      y: { ticks: { font:{size:11} }, grid: { display:false }}
+    }
+  }
+});
+
+new Chart(document.getElementById('midChart'), {
+  type: 'bar',
+  data: {
+    labels: shortLabels,
+    datasets: [
+      {
+        label: '50% Mid',
+        data: rate50,
+        backgroundColor: '#7F77DD',
+        borderRadius: 3
+      },
+      {
+        label: '75% Hold',
+        data: rate75,
+        backgroundColor: '#F0997B',
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' }}
+    },
+    scales: {
+      y: { ticks: { callback: v => v.toFixed(1)+'%', font:{size:10} }, grid: { color: 'rgba(136,135,128,0.15)' }},
+      x: { ticks: { font:{size:10} }, grid: { display:false }}
+    }
+  }
+});
+</script>
